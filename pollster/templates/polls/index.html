@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
-
 {% block title %} index {% endblock %}
 
 {% block content %}
-
-<h1>Polls</h1>
-
+    <h1>Polls questions</h1>
+    {% for question in questions %}
+        <div>
+            <p>{{ question.text }}</p>
+            <a href="{% url 'polls:details' question.id %}">Vote</a>
+            <a href="{% url 'polls:results' question.id %}">Results</a>
+        </div>
+    {% endfor %}
 {% endblock %}
